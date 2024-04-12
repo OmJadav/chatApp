@@ -3,11 +3,11 @@ const dotenv = require("dotenv");
 const path = require("path")
 const mongoose = require("mongoose");
 dotenv.config();
-const app = express();
 const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/AuthRoute")
 const userRoutes = require("./routes/userRoute")
-const messageRoutes = require("./routes/messageRoute")
+const messageRoutes = require("./routes/messageRoute");
+const { app, server } = require("./socket/socket");
 
 const mongoUrl = process.env.MONGO;
 const port = process.env.PORT;
@@ -35,6 +35,6 @@ try {
 }
 
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is running on ${port} 🔥`);
 })
