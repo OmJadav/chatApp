@@ -22,10 +22,10 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/messages", messageRoutes)
 
-// app.use(express.static(path.join(__dirname, "build")))
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "build", "index.html"))
-// })
+app.use(express.static(path.join(__dirname, "build")))
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"))
+})
 
 try {
     mongoose.connect(mongoUrl)
