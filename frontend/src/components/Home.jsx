@@ -31,7 +31,7 @@ export default function Home() {
     return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
 
-  console.log("cure=ren", selectedConversation);
+  console.log("current", selectedConversation);
   useEffect(() => {
     if (selectedConversation) {
       setOpen(true);

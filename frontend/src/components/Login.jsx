@@ -13,6 +13,9 @@ export default function Login() {
     // console.log(inputs);
     await login(inputs);
   };
+  const testCreds = () => {
+    setInputs({ email: "test@gmail.com", password: "1234" });
+  };
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -68,6 +71,11 @@ export default function Login() {
               "Log In"
             )}
           </button>
+          <div className="mt-3 text-center">
+            <button onClick={testCreds} className="btn btn-success w-full ">
+              Test User
+            </button>
+          </div>
         </form>
       </div>
     </div>

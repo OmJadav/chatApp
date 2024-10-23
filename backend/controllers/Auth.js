@@ -11,7 +11,7 @@ exports.loginUser = async (req, res) => {
         if (!user || !isPasswordCorrect) {
             return res.status(400).json({ error: "Invalid email or password" });
         } else {
-            generateTokenAndSetCookie(user._id, res);
+            generateTokenAndSetCookie(res, user._id);
             res.status(201).json({
                 _id: user._id,
                 fullName: user.fullName,
@@ -58,7 +58,7 @@ exports.signupUser = async (req, res) => {
             });
 
             if (newUser) {
-                generateTokenAndSetCookie(newUser._id, res);
+                generateTokenAndSetCookie(res, newUser._id);
                 await newUser.save();
                 res.status(201).json({
                     _id: newUser._id,

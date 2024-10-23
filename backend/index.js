@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path")
+const cors = require("cors")
 const mongoose = require("mongoose");
 dotenv.config();
 const cookieParser = require("cookie-parser");
@@ -12,9 +13,13 @@ const { app, server } = require("./socket/socket");
 const mongoUrl = process.env.MONGO;
 const port = process.env.PORT;
 
-
-app.use(express.json());
+app.use(cors({
+    origin: "https://lets-talk-gray.vercel.app",
+    // origin: "http://localhost:3000",
+    credentials: true
+}));
 app.use(cookieParser());
+app.use(express.json());
 
 
 app.use("/auth", authRoutes);
